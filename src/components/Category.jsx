@@ -1,7 +1,10 @@
+import { useState } from "react";
+
 const CategoryForm = () => {
+  const [isShow, setIsShow] = useState(false);
   return (
     <section>
-      <div className="mb-6" id="category-wrapper">
+      <div className={`mb-6 ${isShow ? "" : "hidden"}`} id="category-wrapper">
         <h2 className="text-xl text-slate-300 font-bold mb-2">
           Add new category
         </h2>
@@ -41,16 +44,17 @@ const CategoryForm = () => {
             >
               Cancel
             </button>
-            <button
-              type="submit"
-              id="add-new-category"
-              className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
-            >
-              Add New Category?
-            </button>
           </div>
         </form>
       </div>
+      <button
+        type="submit"
+        id="add-new-category"
+        className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+        onClick={() => setIsShow((prevState) => !prevState)}
+      >
+        Add New Category?
+      </button>
     </section>
   );
 };
