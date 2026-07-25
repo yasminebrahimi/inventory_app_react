@@ -2,6 +2,16 @@ import { useState } from "react";
 
 const CategoryForm = () => {
   const [isShow, setIsShow] = useState(false);
+  const [categoryFormData, setCategoryFormData] = useState({
+    title: "",
+    description: "",
+  });
+
+  const changeHandler = ({ e }) => {
+    const { name, value } = e.target;
+    setCategoryFormData({ ...categoryFormData, [name]: value });
+  };
+
   const cancelFormHandler = (e) => {
     e.preventDefault();
     setIsShow(false);
@@ -23,9 +33,11 @@ const CategoryForm = () => {
             </label>
             <input
               type="text"
-              name="category-title"
+              name="title"
               id="category-title"
               className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              value={categoryFormData.title}
+              onChange={changeHandler}
             />
           </div>
           <div>
@@ -37,8 +49,10 @@ const CategoryForm = () => {
             </label>
             <textarea
               className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
-              name="category-description"
+              name="description"
               id="category-description"
+              value={categoryFormData.description}
+              onChange={changeHandler}
             ></textarea>
           </div>
           <div className="flex items-center justify-between gap-x-4">
