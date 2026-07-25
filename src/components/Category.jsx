@@ -41,14 +41,18 @@ const CategoryForm = () => {
               type="button"
               className="flex-1 border border-slate-400 text-slate-300 rounded-xl py-2"
               id="cancel-add-category"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsShow(false);
+              }}
             >
               Cancel
             </button>
             <button
               id="add-new-category"
-              class="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+              className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
             >
-              Add New Category
+              Add Category
             </button>
           </div>
         </form>
