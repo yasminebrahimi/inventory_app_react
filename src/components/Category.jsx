@@ -2,6 +2,11 @@ import { useState } from "react";
 
 const CategoryForm = () => {
   const [isShow, setIsShow] = useState(false);
+  const cancelFormHandler = (e) => {
+    e.preventDefault();
+    setIsShow(false);
+  };
+
   return (
     <section>
       <div className={`mb-6 ${isShow ? "" : "hidden"}`} id="category-wrapper">
@@ -41,10 +46,7 @@ const CategoryForm = () => {
               type="button"
               className="flex-1 border border-slate-400 text-slate-300 rounded-xl py-2"
               id="cancel-add-category"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsShow(false);
-              }}
+              onClick={cancelFormHandler}
             >
               Cancel
             </button>
