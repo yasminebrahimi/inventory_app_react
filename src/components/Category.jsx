@@ -44,13 +44,19 @@ const CategoryForm = () => {
             >
               Cancel
             </button>
+            <button
+              id="add-new-category"
+              class="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+            >
+              Add New Category
+            </button>
           </div>
         </form>
       </div>
       <button
         type="submit"
         id="add-new-category"
-        className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+        className={`text-slate-600 text-lg mb-4 font-medium ${isShow && "hidden"}`}
         onClick={() => setIsShow((prevState) => !prevState)}
       >
         Add New Category?
