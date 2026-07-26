@@ -17,6 +17,7 @@ const CategoryForm = ({ setCategories }) => {
     const newCategory = {
       ...categoryFormData,
       createdAt: new Date().toISOString(),
+      id: new Date().getTime(),
     };
     setCategories((prevState) => [...prevState, newCategory]);
     setCategoryFormData({ title: "", description: "" });

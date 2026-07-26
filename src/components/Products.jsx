@@ -54,7 +54,7 @@ const ProductsForm = ({ categories }) => {
               {categories.map((category) => {
                 return (
                   <option
-                    kay={category.createdAt}
+                    kay={category.id}
                     className="bg-slate-500 text-slate-300"
                     value=""
                   >
