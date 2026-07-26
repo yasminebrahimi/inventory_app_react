@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ProductsForm = ({ categories }) => {
+  const [productsFormData, setPorductsFormData] = useState({
+    ttile: "",
+    quantity: 0,
+    category: "",
+  });
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setPorductsFormData({ ...productsFormData, [name]: value });
+  };
+
   return (
     <>
       <div className="mb-6">
@@ -17,9 +28,11 @@ const ProductsForm = ({ categories }) => {
             </label>
             <input
               type="text"
-              name="product-title"
+              name="title"
               id="product-title"
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
+              value={productsFormData.title}
+              onChange={changeHandler}
             />
           </div>
           <div>
@@ -30,10 +43,12 @@ const ProductsForm = ({ categories }) => {
               Quantity
             </label>
             <input
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              className="bg-transparent rounded-xl border border-slate-500 text-slate-500"
               type="number"
-              name="product-quantity"
+              name="quantity"
               id="product-quantity"
+              value={productsFormData.quantity}
+              onChange={changeHandler}
             />
           </div>
           <div>
@@ -44,7 +59,9 @@ const ProductsForm = ({ categories }) => {
               Category
             </label>
             <select
-              name="product-category"
+              value={productsFormData.category}
+              onChange={changeHandler}
+              name="category"
               id="product-category"
               className="bg-transparent text-slate-400 rounded-xl w-full"
             >
