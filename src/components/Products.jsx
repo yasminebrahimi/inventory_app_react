@@ -4,7 +4,7 @@ const ProductsForm = ({ categories }) => {
   const [productsFormData, setPorductsFormData] = useState({
     ttile: "",
     quantity: 0,
-    category: "",
+    categoryId: "",
   });
 
   const changeHandler = (e) => {
@@ -61,7 +61,7 @@ const ProductsForm = ({ categories }) => {
             <select
               value={productsFormData.category}
               onChange={changeHandler}
-              name="category"
+              name="categoryId"
               id="product-category"
               className="bg-transparent text-slate-400 rounded-xl w-full"
             >
@@ -73,7 +73,7 @@ const ProductsForm = ({ categories }) => {
                   <option
                     kay={category.id}
                     className="bg-slate-500 text-slate-300"
-                    value=""
+                    value={category.id}
                   >
                     {category.title}
                   </option>
