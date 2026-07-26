@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProductsForm() {
+const ProductsForm = ({ categories }) => {
   return (
     <>
       <div className="mb-6">
@@ -48,15 +48,20 @@ function ProductsForm() {
               id="product-category"
               className="bg-transparent text-slate-400 rounded-xl w-full"
             >
-              <option className="bg-slate-500 text-slate-400">
+              <option className="bg-slate-500 text-slate-300" value="">
                 Select a category
               </option>
-              <option className="bg-slate-500 text-slate-400" value="backend">
-                Backend
-              </option>
-              <option className="bg-slate-500 text-slate-400" value="frontend">
-                Frontend
-              </option>
+              {categories.map((category) => {
+                return (
+                  <option
+                    kay={category.createdAt}
+                    className="bg-slate-500 text-slate-300"
+                    value=""
+                  >
+                    {category.title}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="flex items-center justify-between gap-x-4">
@@ -78,6 +83,6 @@ function ProductsForm() {
       </button>
     </>
   );
-}
+};
 
 export default ProductsForm;
