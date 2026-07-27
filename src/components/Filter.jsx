@@ -31,10 +31,10 @@ const Filter = ({ onSort, onSearch, sort, searchValue }) => {
             Select a category
           </option>
           <option className="bg-slate-500 text-slate-300" value="latest" >
-            Newest
+            Latest
           </option>
           <option className="bg-slate-500 text-slate-300" value="earliest">
-            Oldest
+            Earliest
           </option>
         </select>
       </div>

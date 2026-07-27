@@ -45,7 +45,8 @@ function App() {
 
   useEffect(() => {
     const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
-    const savedCategories = JSON.parse(localStorage.getItem("products")) || [];
+    const savedCategories =
+      JSON.parse(localStorage.getItem("categories")) || [];
     setProducts(savedProducts);
     setCategories(savedCategories);
   }, []);
@@ -57,10 +58,9 @@ function App() {
   }, [products]);
 
   useEffect(() => {
-    if (categories.length){
-      
+    if (categories.length) {
+      localStorage.setItem("categories", JSON.stringify(categories));
     }
-    localStorage.setItem("categories", JSON.stringify(categories));
   }, [categories]);
 
   return (
