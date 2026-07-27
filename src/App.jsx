@@ -3,6 +3,7 @@ import "./App.css";
 import CategoryForm from "./components/Category";
 import NavBar from "./components/NavBar";
 import ProductsForm from "./components/Products";
+import ProductList from "./components/ProductList";
 
 const products = [];
 
@@ -17,6 +18,7 @@ function App() {
         <div className="container max-w-screen-sm mx-auto p-4">
           <CategoryForm setCategories={setCategories} />
           <ProductsForm categories={categories} />
+          <ProductList />
         </div>
       </div>
     </div>
