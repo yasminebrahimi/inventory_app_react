@@ -5,7 +5,7 @@ const Filter = ({ onSort, onSearch, sort, searchValue }) => {
     <div>
       <div className="flex items-center justify-between mb-6">
         <label htmlFor="search-input" className="text-slate-500 text-lg">
-          search
+          Search
         </label>
         <input
           type="text"
@@ -18,7 +18,7 @@ const Filter = ({ onSort, onSearch, sort, searchValue }) => {
       </div>
       <div className="flex items-center justify-between mb-6">
         <label htmlFor="sort-products" className="text-slate-500 text-lg">
-          sort
+          Sort
         </label>
         <select
           name="sort-products"
@@ -28,13 +28,13 @@ const Filter = ({ onSort, onSearch, sort, searchValue }) => {
           onChange={onSort}
         >
           <option className="bg-slate-500 text-slate-300" value="">
-            select a category
+            Select a category
           </option>
           <option className="bg-slate-500 text-slate-300" value="latest" >
-            newest
+            Newest
           </option>
           <option className="bg-slate-500 text-slate-300" value="earliest">
-            oldest
+            Oldest
           </option>
         </select>
       </div>
