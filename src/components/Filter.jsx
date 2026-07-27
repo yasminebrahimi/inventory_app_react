@@ -58,7 +58,7 @@ const Filter = ({
           onChange={onSelectCategory}
         >
           <option className="bg-slate-500 text-slate-300" value="">
-            Select a category
+            All
           </option>
           {categories.map((category) => {
             return (
