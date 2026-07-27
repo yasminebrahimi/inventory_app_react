@@ -106,13 +106,13 @@ const ProductsForm = ({ categories, setProducts }) => {
           </div>
         </form>
       </div>
-      <button
+      {/* <button
         type="button"
         id="toggle-add-category"
         className="text-slate-600 text-lg mb-4 font-medium"
       >
         Add Category
-      </button>
+      </button> */}
     </>
   );
 };
