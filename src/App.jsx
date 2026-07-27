@@ -13,28 +13,34 @@ function App() {
   const [sort, setSort] = useState("latest");
   const [searchValue, setSearchValue] = useState("");
 
-  useEffect(() => {}, [products, sort, searchValue]);
+  useEffect(() => {
+    let result = products;
+    result = filterSearchTitle(result);
+    result = sortDate(result);
+    setFilteredProducts(result);
+  }, [products, sort, searchValue]);
 
   const sortHandler = (e) => {
     setSort(e.target.value);
-    let sortedProducts = [...products];
-    sortedProducts.sort((a, b) => {
-      if (e.target.value === "latest") {
-        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
-      } else if (e.target.value === "earliest") {
-        return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
-      }
-    });
-    setFilteredProducts(sortedProducts);
   };
 
   const searchHandler = (e) => {
-    setSearchValue(e.target.value);
-    const value = e.target.value.trim().toLowerCase();
-    const filteredProducts = products.filter((p) =>
-      p.title.toLowerCase().includes(value),
-    );
-    setFilteredProducts(filteredProducts);
+    setSearchValue(e.target.value.trim().toLowerCase());
+  };
+
+  const filterSearchTitle = (array) => {
+    return array.filter((p) => p.title.toLowerCase().includes(searchValue));
+  };
+
+  const sortDate = (array) => {
+    let sorttedProducts = [...array];
+    return sorttedProducts.sort((a, b) => {
+      if (sort === "latest") {
+        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+      } else if (sort === "earliest") {
+        return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
+      }
+    });
   };
 
   return (
