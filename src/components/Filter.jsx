@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Filter = ({ onSort, onSearch, sort, searchValue }) => {
+const Filter = ({ onSort, onSearch, sort, searchValue, categories }) => {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -30,12 +30,39 @@ const Filter = ({ onSort, onSearch, sort, searchValue }) => {
           <option className="bg-slate-500 text-slate-300" value="">
             Select a category
           </option>
-          <option className="bg-slate-500 text-slate-300" value="latest" >
+          <option className="bg-slate-500 text-slate-300" value="latest">
             Latest
           </option>
           <option className="bg-slate-500 text-slate-300" value="earliest">
             Earliest
           </option>
+        </select>
+      </div>
+      <div className="flex items-center justify-between mb-6">
+        <label htmlFor="sort-products" className="text-slate-500 text-lg">
+          Category
+        </label>
+        <select
+          name="sort-products"
+          id="sort-products"
+          className="bg-transparent text-slate-400 rounded-xl"
+          value={sort}
+          onChange={onSort}
+        >
+          <option className="bg-slate-500 text-slate-300" value="">
+            Select a category
+          </option>
+          {categories.map((category) => {
+            return (
+              <option
+                className="bg-slate-500 text-slate-300"
+                value={category.id}
+                key={category.id}
+              >
+                {category.title}
+              </option>
+            );
+          })}
         </select>
       </div>
     </div>

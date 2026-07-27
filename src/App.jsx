@@ -75,6 +75,7 @@ function App() {
             searchValue={searchValue}
             onSort={sortHandler}
             onSearch={searchHandler}
+            categories={categories}
           />
           <ProductList
             products={filteredProducts}
