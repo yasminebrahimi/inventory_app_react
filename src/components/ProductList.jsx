@@ -1,6 +1,13 @@
-const ProductList = ({ products, categories }) => {
+const ProductList = ({ products, categories, setProducts }) => {
   const findCategory = (categoryId) => {
     return categories.find((c) => c.id === parseInt(categoryId)).title;
+  };
+
+  const deleteProduct = (productId) => {
+    const filteredProducts = products.filter(
+      (product) => product.id !== parseInt(productId),
+    );
+    setProducts(filteredProducts);
   };
   return (
     <div>
@@ -22,7 +29,10 @@ const ProductList = ({ products, categories }) => {
               <span className="flex items-center justify-center w-7 h-7 rounded-full bg-slate-500 border-2 border-slate-300 text-slate-300">
                 {product.quantity}
               </span>
-              <button className="delete-product border px-2 py-0.5 rounded-2xl border-red-400 text-red-400">
+              <button
+                onClick={() => deleteProduct(product.id)}
+                className="delete-product border px-2 py-0.5 rounded-2xl border-red-400 text-red-400"
+              >
                 delete
               </button>
             </div>
