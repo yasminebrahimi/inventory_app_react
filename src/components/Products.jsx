@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 
 const ProductsForm = ({ categories }) => {
-  const [productsFormData, setPorductsFormData] = useState({
-    ttile: "",
+  const [productsFormData, setProductsFormData] = useState({
+    title: "",
     quantity: 0,
     categoryId: "",
   });
 
+  const [products, setProducts] = useState([]);
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setPorductsFormData({ ...productsFormData, [name]: value });
+    setProductsFormData({ ...productsFormData, [name]: value });
+  };
+
+  const addNewProduct = (e) => {
+    e.preventDefault();
+    const newProduct = {
+      ...productsFormData,
+      createdAt: new Date().toISOString(),
+      id: new Date().getTime(),
+    };
+    setProducts((prevState) => [...prevState, newProduct]);
+    setProductsFormData({ title: "", quantity: "", categoryId: "" });
   };
 
   return (
@@ -18,7 +31,10 @@ const ProductsForm = ({ categories }) => {
         <h2 className="text-xl text-slate-300 font-bold mb-2">
           Add new product
         </h2>
-        <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+        <form
+          className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4"
+          onSubmit={addNewProduct}
+        >
           <div>
             <label
               htmlFor="product-title"
@@ -59,7 +75,7 @@ const ProductsForm = ({ categories }) => {
               Category
             </label>
             <select
-              value={productsFormData.category}
+              value={productsFormData.categoryId}
               onChange={changeHandler}
               name="categoryId"
               id="product-category"
@@ -71,7 +87,7 @@ const ProductsForm = ({ categories }) => {
               {categories.map((category) => {
                 return (
                   <option
-                    kay={category.id}
+                    key={category.id}
                     className="bg-slate-500 text-slate-300"
                     value={category.id}
                   >
@@ -93,6 +109,7 @@ const ProductsForm = ({ categories }) => {
         </form>
       </div>
       <button
+        type="button"
         id="toggle-add-category"
         className="text-slate-600 text-lg mb-4 font-medium"
       >
