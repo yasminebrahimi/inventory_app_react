@@ -11,14 +11,16 @@ function App() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sort, setSort] = useState("latest");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     let result = products;
     result = filterSearchTitle(result);
+    result = filterSelectedCategory(result);
     result = sortDate(result);
     setFilteredProducts(result);
-  }, [products, sort, searchValue]);
+  }, [products, sort, searchValue, selectedCategory]);
 
   const sortHandler = (e) => {
     setSort(e.target.value);
@@ -26,6 +28,10 @@ function App() {
 
   const searchHandler = (e) => {
     setSearchValue(e.target.value.trim().toLowerCase());
+  };
+
+  const selectCategoryHandler = (e) => {
+    setSelectedCategory(e.target.value);
   };
 
   const filterSearchTitle = (array) => {
@@ -41,6 +47,11 @@ function App() {
         return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
       }
     });
+  };
+
+  const filterSelectedCategory = (array) => {
+    if (!selectedCategory) return array;
+    return array.filter((item) => item.categoryId === selectedCategory);
   };
 
   useEffect(() => {
@@ -76,6 +87,8 @@ function App() {
             onSort={sortHandler}
             onSearch={searchHandler}
             categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={selectCategoryHandler}
           />
           <ProductList
             products={filteredProducts}

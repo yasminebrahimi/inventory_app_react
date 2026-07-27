@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 
-const Filter = ({ onSort, onSearch, sort, searchValue, categories }) => {
+const Filter = ({
+  onSort,
+  onSearch,
+  sort,
+  searchValue,
+  categories,
+  selectedCategory,
+  onSelectCategory,
+}) => {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -46,8 +54,8 @@ const Filter = ({ onSort, onSearch, sort, searchValue, categories }) => {
           name="sort-products"
           id="sort-products"
           className="bg-transparent text-slate-400 rounded-xl"
-          value={sort}
-          onChange={onSort}
+          value={selectedCategory}
+          onChange={onSelectCategory}
         >
           <option className="bg-slate-500 text-slate-300" value="">
             Select a category
