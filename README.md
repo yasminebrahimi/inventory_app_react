@@ -1,16 +1,53 @@
-# React + Vite
+# Inventory App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple inventory management app built with React and Tailwind CSS. Add categories and products, then search, sort, and filter your inventory — all data is saved locally in the browser.
 
-Currently, two official plugins are available:
+**Live demo:** [inventory-app-yasmin.netlify.app](https://inventory-app-yasmin.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Add categories with a title and description
+- Add products with a title, quantity, and category
+- Search products by title
+- Sort products by date added (latest / earliest)
+- Filter products by category
+- Delete products
+- Data persists in `localStorage`, so it stays after a page refresh
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Category.jsx      # Form to add a new category
+│   ├── Products.jsx      # Form to add a new product
+│   ├── ProductList.jsx   # Displays the list of products
+│   ├── Filter.jsx        # Search, sort, and category filter controls
+│   └── NavBar.jsx        # Top navigation bar
+├── App.jsx                # Main app logic and state
+└── main.jsx                # App entry point
+```
+
+## Getting Started
+
+1. Clone the repository
+   ```bash
+   git clone <your-repo-url>
+   cd <your-repo-folder>
+   ```
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+3. Run the development server
+   ```bash
+   npm run dev
+   ```
+4. Open the app at `http://localhost:5173` 
+
